@@ -15,6 +15,7 @@ natmort <- extractM("bootstrap/data/config/control.dat")
 setwd("data")
 write.taf(data$catage)      # 10
 write.taf(data$catch)       # 2
+write.taf(data$cpue)        # fig31
 write.taf(data$maturity)    # p17
 write.taf(data$survey.at)   # 22
 write.taf(data$survey.avo)  # 23

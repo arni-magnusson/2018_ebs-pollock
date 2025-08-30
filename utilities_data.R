@@ -31,6 +31,11 @@ extractData <- function(datafile)
                                       skip=grep("Catch in kilo tons",txt)+2,
                                       nlines=1, quiet=TRUE))
 
+  ## 4  CPUE (JP trawl)
+  cpue <- read.table(text=txt, skip=grep("Japanese.*CPUE",txt)+3, nrows=2,
+                     row.names=c("Year", "Index"))
+  cpue <- data.frame(t(cpue), row.names=NULL)
+
   ## 4  Survey (AVO)
   survey.avo <- data.frame(t(read.table(text=txt, skip=grep("AVO data",txt)+2,
                                         nrows=2, row.names=c("Year","Index"))))
@@ -66,8 +71,9 @@ extractData <- function(datafile)
                                      nrows=16))
   names(survey.at) <- c("Year", 1:nages)
 
-  list(maturity=maturity, wcatch=wcatch, catch=catch, survey.avo=survey.avo,
-       catage=catage, wstock=wstock, survey.bts=survey.bts, survey.at=survey.at)
+  list(maturity=maturity, wcatch=wcatch, catch=catch, cpue=cpue,
+       survey.avo=survey.avo, catage=catage, wstock=wstock,
+       survey.bts=survey.bts, survey.at=survey.at)
 }
 
 extractM <- function(controlfile, skip=10, nrows=15)

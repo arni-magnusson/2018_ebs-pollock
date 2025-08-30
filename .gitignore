@@ -1,0 +1,12 @@
+/bootstrap/data
+/bootstrap/library
+/bootstrap/software
+/data
+/model
+/output
+/report
+*.Rproj
+.RData
+.Rhistory
+.Rproj.user
+.Ruserdata
